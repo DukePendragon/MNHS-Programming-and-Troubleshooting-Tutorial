@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNHS Programming and Troubleshooting Tutorials</title>
+  <style>
+    /* General Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-y: auto;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #f0f8ff;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    /* Tutorial Buttons Container */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .box:hover {
+      transform: scale(1.1);
+      background-color: #ffffff;
+    }
+
+    /* Button Colors */
+    .easy {
+      background-color: #28a745;
+    }
+
+    .basic {
+      background-color: #17a2b8;
+    }
+
+    .advanced {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    .troubleshooting {
+      background-color: #dc3545;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: gray;
+      color: white;
+    }
+
+    /* Dropdown Menu */
+    .three-dots {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 30px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+      top: 35px;
+      border-radius: 8px;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    /* Privacy Policy Modal */
+    .privacy-policy-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      text-align: center;
+    }
+
+    .privacy-policy-container button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 10px 5px;
+    }
+
+    .privacy-policy-container button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .privacy-policy-link {
+      color: blue;
+      text-decoration: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .box {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        padding: 20px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .container {
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Privacy Policy Prompt -->
+  <div class="privacy-policy-container" id="privacy-policy">
+    <h3>Privacy Policy</h3>
+    <p>Before proceeding, you need to agree to our Privacy Policy.</p>
+    <p><a href="privacy_policy.html" class="privacy-policy-link" target="_blank">View Full Privacy Policy</a></p>
+    <label>
+      <input type="checkbox" id="agreeCheckbox"> I agree to the Privacy Policy
+    </label>
+    <br>
+    <button id="agreeButton" disabled>Agree</button>
+    <button id="disagreeButton">Disagree</button>
+  </div>
+
+  <!-- Header Content -->
+  <header id="header-content" style="display: none;">
+    <h1>MNHS Camaya Campus</h1>
+    <p>Programming and Troubleshooting Tutorials</p>
+  </header>
+
+  <!-- Content Container -->
+  <div class="container" id="main-content" style="display: none;">
+    <a href="easy.html" style="text-decoration: none; color: inherit;" class="box easy">
+      <span>Easy Tutorials</span>
+    </a>
+    <a href="basic.html" style="text-decoration: none; color: inherit;" class="box basic">
+      <span>Basic Tutorials</span>
+    </a>
+    <a href="advanced.html" style="text-decoration: none; color: inherit;" class="box advanced">
+      <span>Advanced Tutorials</span>
+    </a>
+    <a href="troubleshooting.html" style="text-decoration: none; color: inherit;" class="box troubleshooting">
+      <span>Troubleshooting</span>
+    </a>
+  </div>
+
+  <!-- 3 Dots Dropdown Menu for Quiz -->
+  <div class="dropdown">
+    <span class="three-dots">...</span>
+    <div class="dropdown-content">
+      <a href="quiz_game.html">Quiz Game</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer-content" style="display: none;">
+    <p>&copy; 2025 MNHS Camaya Campus | All Rights Reserved | <a href="privacy_policy.html" class="privacy-policy-link">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Privacy Policy Script
+    window.onload = function() {
+      if (localStorage.getItem('privacyPolicyAgreed') === 'true') {
+        document.getElementById('privacy-policy').style.display = 'none';
+        document.getElementById('header-content').style.display = 'block';
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('footer-content').style.display = 'block';
+      } else {
+        document.getElementById('privacy-policy').style.display = 'flex';
+      }
+
+      document.getElementById('agreeButton').addEventListener('click', function() {
+        localStorage.setItem('privacyPolicyAgreed', 'true');
+        document.getElementById('privacy-policy').style.display = 'none';
+        document.getElementById('header-content').style.display = 'block';
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('footer-content').style.display = 'block';
+      });
+
+      document.getElementById('disagreeButton').addEventListener('click', function() {
+        localStorage.setItem('privacyPolicyAgreed', 'false');
+        window.close();
+        alert('You need to agree to the Privacy Policy to continue.');
+      });
+
+      document.getElementById('agreeCheckbox').addEventListener('change', function() {
+        document.getElementById('agreeButton').disabled = !this.checked;
+      });
+    };
+  </script>
+</body>
+</html>
